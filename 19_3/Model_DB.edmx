@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище СтудентыModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Авторизация">
+          <Key>
+            <PropertyRef Name="Код" />
+          </Key>
+          <Property Name="Код" Type="int" Nullable="false" />
+          <Property Name="Логин" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Пароль" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Доступ" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Почта" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Студенты">
+          <Key>
+            <PropertyRef Name="НомерЗачётнойКнижки" />
+          </Key>
+          <Property Name="НомерЗачётнойКнижки" Type="int" Nullable="false" />
+          <Property Name="ФИО_Студента" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Общежитие" Type="bit" Nullable="false" />
+          <Property Name="ИндексГруппы" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Высшая_Математика" Type="bit" Nullable="false" />
+          <Property Name="Разработка_Базы_Данных" Type="bit" Nullable="false" />
+          <Property Name="Компьютерные_Сети" Type="bit" Nullable="false" />
+          <Property Name="Разработка_Программных_Модулей" Type="bit" Nullable="false" />
+          <Property Name="Психология_Общения" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище СтудентыModelContainer">
+          <EntitySet Name="Авторизация" EntityType="Self.Авторизация" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Студенты" EntityType="Self.Студенты" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="СтудентыModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Авторизация">
+          <Key>
+            <PropertyRef Name="Код" />
+          </Key>
+          <Property Name="Код" Type="Int32" Nullable="false" />
+          <Property Name="Логин" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Пароль" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Доступ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Почта" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Студенты">
+          <Key>
+            <PropertyRef Name="НомерЗачётнойКнижки" />
+          </Key>
+          <Property Name="НомерЗачётнойКнижки" Type="Int32" Nullable="false" />
+          <Property Name="ФИО_Студента" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Общежитие" Type="Boolean" Nullable="false" />
+          <Property Name="ИндексГруппы" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Высшая_Математика" Type="Boolean" Nullable="false" />
+          <Property Name="Разработка_Базы_Данных" Type="Boolean" Nullable="false" />
+          <Property Name="Компьютерные_Сети" Type="Boolean" Nullable="false" />
+          <Property Name="Разработка_Программных_Модулей" Type="Boolean" Nullable="false" />
+          <Property Name="Психология_Общения" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="СтудентыEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Авторизация" EntityType="Self.Авторизация" />
+          <EntitySet Name="Студенты" EntityType="Self.Студенты" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище СтудентыModelContainer" CdmEntityContainer="СтудентыEntities">
+          <EntitySetMapping Name="Авторизация">
+            <EntityTypeMapping TypeName="СтудентыModel.Авторизация">
+              <MappingFragment StoreEntitySet="Авторизация">
+                <ScalarProperty Name="Код" ColumnName="Код" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="Доступ" ColumnName="Доступ" />
+                <ScalarProperty Name="Почта" ColumnName="Почта" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Студенты">
+            <EntityTypeMapping TypeName="СтудентыModel.Студенты">
+              <MappingFragment StoreEntitySet="Студенты">
+                <ScalarProperty Name="НомерЗачётнойКнижки" ColumnName="НомерЗачётнойКнижки" />
+                <ScalarProperty Name="ФИО_Студента" ColumnName="ФИО_Студента" />
+                <ScalarProperty Name="Общежитие" ColumnName="Общежитие" />
+                <ScalarProperty Name="ИндексГруппы" ColumnName="ИндексГруппы" />
+                <ScalarProperty Name="Высшая_Математика" ColumnName="Высшая_Математика" />
+                <ScalarProperty Name="Разработка_Базы_Данных" ColumnName="Разработка_Базы_Данных" />
+                <ScalarProperty Name="Компьютерные_Сети" ColumnName="Компьютерные_Сети" />
+                <ScalarProperty Name="Разработка_Программных_Модулей" ColumnName="Разработка_Программных_Модулей" />
+                <ScalarProperty Name="Психология_Общения" ColumnName="Психология_Общения" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
